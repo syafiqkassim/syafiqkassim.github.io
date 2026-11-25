@@ -23,11 +23,16 @@ The owner can also edit articles himself through **Sveltia CMS** at https://syaf
   "title": "Article title",
   "date": "YYYY-MM-DD",
   "tags": ["QR phishing", "Cybersecurity"],
+  "image": "/images/articles/file-name.webp",
+  "image_alt": "Short description of the picture",
+  "image_caption": "Photo: source or credit",
   "summary": "One or two sentences shown in the article list.",
   "body": "Paragraph text...\n\n## Heading\n\n- list item\n- list item\n\nCite sources as [1], [2].",
   "refs": ["Author. (Year). Title. Publisher. https://..."]
 }
 ```
+
+`image`, `image_alt` and `image_caption` are optional. Images are stored in `images/articles/` (the CMS uploads there and converts to WebP, max 1600px). The site only shows `image` values starting with `/images/` or `https://`, always cropped to 16:9 (`.cover`): a 13rem thumbnail beside the title in the list (above it under 560px) and full width at the top of the article. Recommended upload: 1600 × 900 px landscape.
 
 Body format (mini-markdown, parsed by `renderBody`):
 - Blank line (`\n\n`) between blocks.

@@ -14,8 +14,18 @@ backend:
 
 site_url: https://syafiqkassim.github.io
 display_url: https://syafiqkassim.github.io
-media_folder: images
+media_folder: /images
 public_folder: /images
+
+# Uploaded photos are converted to WebP and shrunk to at most 1600px wide, in the browser, before saving.
+media_libraries:
+  all:
+    transformations:
+      raster_image:
+        format: webp
+        quality: 82
+        width: 1600
+        height: 1600
 
 collections:
   - name: articles
@@ -26,6 +36,8 @@ collections:
       Body format: blank line between paragraphs; "## " starts a heading;
       lines starting with "- " make a bullet list; cite sources as [1], [2] matching the References order.
     file: data/articles.json
+    media_folder: /images/articles
+    public_folder: /images/articles
     identifier_field: title
     summary: "{{date}} · {{title}}"
     sortable_fields: [date, title]
@@ -47,6 +59,22 @@ collections:
         widget: list
         required: false
         field: { name: tag, label: Tag, widget: string }
+      - name: image
+        label: Cover image
+        widget: image
+        required: false
+        choose_url: false
+        hint: "Optional. Landscape photo, ideally 1600 × 900 px (16:9). It is shown cropped to 16:9: as a thumbnail beside the title in the list (above it on phones) and full width at the top of the article. Keep the main subject in the centre. Uploads are converted to WebP automatically."
+      - name: image_alt
+        label: Image description (alt text)
+        widget: string
+        required: false
+        hint: "Short description of the picture for screen readers, e.g. 'A QR code sticker on a parking meter'."
+      - name: image_caption
+        label: Image caption / credit
+        widget: string
+        required: false
+        hint: "Optional line shown under the picture, e.g. 'Photo: Syafiq Kassim' or the source of the image."
       - name: summary
         label: Summary
         widget: text

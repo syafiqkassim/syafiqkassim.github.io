@@ -136,6 +136,17 @@
   .post-item h3 { font-size: 1.3125rem; font-weight: 500; line-height: 1.3; transition: color .15s; }
   .post-item a:hover h3 { color: var(--accent); }
   .post-item .summary { color: var(--muted); }
+  /* Article cover images: always cropped to 16:9 so every card and page lines up. */
+  .cover { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; background: var(--accent-soft); border: 1px solid var(--line); }
+  .post-item a.has-thumb { grid-template-columns: minmax(0, 1fr) 13rem; column-gap: 1.75rem; align-items: start; }
+  .post-item a.has-thumb .thumb { grid-column: 2; grid-row: 1 / span 3; }
+  .post-item a.has-thumb > :not(.thumb) { grid-column: 1; }
+  @media (max-width: 560px) {
+    .post-item a.has-thumb { grid-template-columns: 1fr; }
+    .post-item a.has-thumb .thumb { grid-column: 1; grid-row: 1; margin-bottom: 0.5rem; }
+  }
+  .reader-cover { margin: 0; display: grid; gap: 0.5rem; }
+  .reader-cover figcaption { font-size: 0.875rem; color: var(--muted); }
   .meta { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
   .meta .tag { color: var(--accent); }
   .empty { color: var(--muted); padding-block: 1.25rem; border-top: 1px solid var(--line); }
@@ -366,6 +377,10 @@
       <div class="meta" id="r-meta"></div>
       <h1 id="r-title"></h1>
       <p class="reader-summary" id="r-summary"></p>
+      <figure class="reader-cover" id="r-cover" hidden>
+        <img class="cover" id="r-cover-img" alt="" width="1600" height="900" decoding="async">
+        <figcaption id="r-cover-cap"></figcaption>
+      </figure>
       <div class="owner-bar" id="r-owner" hidden>
         <button class="btn" id="r-edit" type="button">Edit article</button>
         <button class="btn danger" id="r-delete" type="button">Delete</button>
@@ -461,6 +476,12 @@
   const readMins = text => Math.max(1, Math.round((text || '').split(/\s+/).filter(Boolean).length / 200));
   const slugify = s => (s || 'article').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'article';
 
+  // Only images uploaded to the site (/images/...) or https URLs are shown.
+  const imageSrc = a => {
+    const src = (a && typeof a.image === 'string') ? a.image.trim() : '';
+    return /^(\/images\/|https:\/\/)\S+$/.test(src) ? src : '';
+  };
+
   function metaInto(el, a) {
     el.textContent = '';
     const parts = [fmtDate(a.date), readMins(a.body) + ' min read'];
@@ -507,6 +528,14 @@
       const link = document.createElement('a'); link.href = '#a-' + a.slug;
       const meta = document.createElement('div'); meta.className = 'meta'; metaInto(meta, a);
       const h = document.createElement('h3'); h.textContent = a.title;
+      const src = imageSrc(a);
+      if (src) {
+        link.classList.add('has-thumb');
+        const img = document.createElement('img');
+        img.className = 'cover thumb'; img.src = src; img.alt = '';
+        img.width = 1600; img.height = 900; img.loading = 'lazy'; img.decoding = 'async';
+        link.appendChild(img);
+      }
       link.append(meta, h);
       if (a.summary) { const p = document.createElement('p'); p.className = 'summary'; p.textContent = a.summary; link.appendChild(p); }
       li.appendChild(link); list.appendChild(li);
@@ -521,6 +550,12 @@
     $('r-title').textContent = a.title;
     $('r-summary').textContent = a.summary || '';
     $('r-summary').hidden = !a.summary;
+    const src = imageSrc(a);
+    $('r-cover').hidden = !src;
+    if (src) { $('r-cover-img').src = src; $('r-cover-img').alt = a.image_alt || ''; }
+    else { $('r-cover-img').removeAttribute('src'); }
+    $('r-cover-cap').textContent = a.image_caption || '';
+    $('r-cover-cap').hidden = !a.image_caption;
     renderBody($('r-body'), a.body);
     const refs = $('r-refs'); refs.textContent = '';
     (a.refs || []).forEach(r => { const li = document.createElement('li'); linkify(li, r); refs.appendChild(li); });
