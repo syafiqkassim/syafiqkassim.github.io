@@ -1,0 +1,64 @@
+# Sveltia CMS config for syafiqkassim.github.io
+# Admin page: https://syafiqkassim.github.io/admin/
+# Sign in with "Sign In with Token" (GitHub fine-grained token, this repo only, Contents: Read and write).
+# Never put the token in this file: it is public.
+
+backend:
+  name: github
+  repo: syafiqkassim/syafiqkassim.github.io
+  branch: main
+  commit_messages:
+    create: "Add article: {{slug}}"
+    update: "Update article: {{slug}}"
+    delete: "Delete article: {{slug}}"
+
+site_url: https://syafiqkassim.github.io
+display_url: https://syafiqkassim.github.io
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    description: >-
+      Articles shown in the Writing section. Content is in English.
+      Body format: blank line between paragraphs; "## " starts a heading;
+      lines starting with "- " make a bullet list; cite sources as [1], [2] matching the References order.
+    file: data/articles.json
+    identifier_field: title
+    summary: "{{date}} · {{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - name: slug
+        label: Slug (URL)
+        widget: string
+        hint: "Lowercase words joined with hyphens, unique per article, e.g. why-qr-codes-became-a-phishing-tool. Becomes the link #a-<slug>. Don't change it after publishing."
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and hyphens only']
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+      - name: tags
+        label: Tags
+        widget: list
+        required: false
+        field: { name: tag, label: Tag, widget: string }
+      - name: summary
+        label: Summary
+        widget: text
+        required: false
+        hint: One or two sentences shown in the article list.
+      - name: body
+        label: Article
+        widget: text
+        hint: 'Blank line between paragraphs. "## Heading" for a heading. Lines starting with "- " for a bullet list. Cite as [1], [2]. No bold, italics or HTML.'
+      - name: refs
+        label: References
+        widget: list
+        required: false
+        hint: "One source per item, in citation order ([1] = first). Only https:// links become clickable. Every fact or statistic needs a real source."
+        field: { name: ref, label: Reference, widget: text }

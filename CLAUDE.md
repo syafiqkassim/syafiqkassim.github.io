@@ -7,13 +7,15 @@ Personal academic website of Syafiq Kassim, Gtech. (PhD candidate, School of Com
 
 ## Structure
 
-Everything is in a single file, `index.html`: inline CSS, inline JS, no framework, no build. Do not add a build tool, package.json or extra frameworks.
+Almost everything is in `index.html`: inline CSS, inline JS, no framework, no build. Articles are in `data/articles.json`; the CMS lives in `admin/`. Do not add a build tool, package.json or extra frameworks.
 
 Sections (in order, each `<section class="block" id="...">`): `about`, `work`, `research`, `writing`, `contact`. The hero has a "ledger" of credentials (Study / Role / Registration).
 
 ## Adding or editing an article
 
-Articles live as JSON in `<script type="application/json" id="articles-data">[ ... ]</script>`. Add a new object to that array; the JS renders the list (newest first) and the reader page (`#a-<slug>`).
+Articles live in **`data/articles.json`**: a JSON array, one object per article. `index.html` fetches it at load time and renders the list (newest first) and the reader page (`#a-<slug>`). The inline `<script id="articles-data">` in `index.html` is just an empty `[]` fallback; don't put articles there.
+
+The owner can also edit articles himself through **Sveltia CMS** at https://syafiqkassim.github.io/admin/ (`admin/index.html` + `admin/config.yml`; sign in with a GitHub token). The CMS commits straight to `main` and may reformat the JSON. So **always `git pull` before editing**, and keep the field names below in sync with `admin/config.yml`.
 
 ```json
 {
@@ -34,7 +36,7 @@ Body format (mini-markdown, parsed by `renderBody`):
 - No HTML, bold or italics in the body; it is rendered as text.
 
 Rules:
-- Keep the JSON valid. Escape `<` as `<` inside the JSON (a literal `</script>` would break the page).
+- Keep the JSON valid (check with `python3 -c "import json;json.load(open('data/articles.json'))"`).
 - `slug` must be unique; it becomes the URL `#a-<slug>`.
 - Every factual claim or statistic needs a real, verifiable reference. Never invent sources, figures or DOIs; ask the owner if a source is missing.
 - Writing style: clear, for a general audience, British/Malaysian English spelling.
@@ -49,6 +51,6 @@ The JS contains an owner-only "New article" editor that only works inside a Clau
 
 ## Publishing
 
-1. Make the change in `index.html`.
+1. `git pull` (the CMS may have pushed changes), then make the change in `index.html` or `data/articles.json`.
 2. Check the JSON parses and the page has no obvious breakage.
 3. Commit with a short clear message and push (or open a PR if working on a branch). GitHub Pages updates in 1–5 minutes.
