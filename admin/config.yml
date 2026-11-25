@@ -65,6 +65,12 @@ collections:
         required: false
         choose_url: false
         hint: "Optional. Landscape photo, ideally 1600 × 900 px (16:9). It is shown cropped to 16:9: as a thumbnail beside the title in the list (above it on phones) and full width at the top of the article. Keep the main subject in the centre. Uploads are converted to WebP automatically."
+      - name: image_whole
+        label: Show whole image (no crop)
+        widget: boolean
+        required: false
+        default: false
+        hint: "Turn on for square or tall images, diagrams, charts or QR codes. The whole picture is shown inside the 16:9 frame on a plain background instead of being cropped."
       - name: image_alt
         label: Image description (alt text)
         widget: string

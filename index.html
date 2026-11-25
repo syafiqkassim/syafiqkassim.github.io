@@ -138,6 +138,9 @@
   .post-item .summary { color: var(--muted); }
   /* Article cover images: always cropped to 16:9 so every card and page lines up. */
   .cover { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; background: var(--accent-soft); border: 1px solid var(--line); }
+  /* "Show whole image": fit square images, diagrams and charts inside the 16:9 frame instead of cropping. */
+  .cover.whole { object-fit: contain; background: var(--surface); padding: 0.75rem; box-sizing: border-box; }
+  .cover.thumb.whole { padding: 0.375rem; }
   .post-item a.has-thumb { grid-template-columns: minmax(0, 1fr) 13rem; column-gap: 1.75rem; align-items: start; }
   .post-item a.has-thumb .thumb { grid-column: 2; grid-row: 1 / span 3; }
   .post-item a.has-thumb > :not(.thumb) { grid-column: 1; }
@@ -532,7 +535,7 @@
       if (src) {
         link.classList.add('has-thumb');
         const img = document.createElement('img');
-        img.className = 'cover thumb'; img.src = src; img.alt = '';
+        img.className = 'cover thumb' + (a.image_whole === true ? ' whole' : ''); img.src = src; img.alt = '';
         img.width = 1600; img.height = 900; img.loading = 'lazy'; img.decoding = 'async';
         link.appendChild(img);
       }
@@ -552,6 +555,7 @@
     $('r-summary').hidden = !a.summary;
     const src = imageSrc(a);
     $('r-cover').hidden = !src;
+    $('r-cover-img').classList.toggle('whole', a.image_whole === true);
     if (src) { $('r-cover-img').src = src; $('r-cover-img').alt = a.image_alt || ''; }
     else { $('r-cover-img').removeAttribute('src'); }
     $('r-cover-cap').textContent = a.image_caption || '';

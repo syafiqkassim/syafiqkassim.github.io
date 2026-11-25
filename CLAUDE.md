@@ -24,6 +24,7 @@ The owner can also edit articles himself through **Sveltia CMS** at https://syaf
   "date": "YYYY-MM-DD",
   "tags": ["QR phishing", "Cybersecurity"],
   "image": "/images/articles/file-name.webp",
+  "image_whole": false,
   "image_alt": "Short description of the picture",
   "image_caption": "Photo: source or credit",
   "summary": "One or two sentences shown in the article list.",
@@ -32,7 +33,7 @@ The owner can also edit articles himself through **Sveltia CMS** at https://syaf
 }
 ```
 
-`image`, `image_alt` and `image_caption` are optional. Images are stored in `images/articles/` (the CMS uploads there and converts to WebP, max 1600px). The site only shows `image` values starting with `/images/` or `https://`, always cropped to 16:9 (`.cover`): a 13rem thumbnail beside the title in the list (above it under 560px) and full width at the top of the article. Recommended upload: 1600 × 900 px landscape.
+`image`, `image_alt` and `image_caption` are optional. Images are stored in `images/articles/` (the CMS uploads there and converts to WebP, max 1600px). The site only shows `image` values starting with `/images/` or `https://`, always cropped to 16:9 (`.cover`): a 13rem thumbnail beside the title in the list (above it under 560px) and full width at the top of the article. Recommended upload: 1600 × 900 px landscape. `image_whole: true` adds class `whole` (object-fit: contain on a plain background) for square images, diagrams and charts.
 
 Body format (mini-markdown, parsed by `renderBody`):
 - Blank line (`\n\n`) between blocks.
