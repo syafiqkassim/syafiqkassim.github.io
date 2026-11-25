@@ -3,7 +3,7 @@
 Personal academic website of Syafiq Kassim, Gtech. (PhD candidate, School of Computing, UUM; Assistant IT Officer, UUMIT; research on QR code phishing / cybersecurity / explainable AI).
 
 - Live: https://syafiqkassim.github.io (GitHub Pages, served from `main`, no build step)
-- The owner usually edits through Claude Code on the web. **Reply to him in Malay**; the website content itself is in **English**.
+- The owner usually edits through Claude Code on the web. **Reply to him in Malay**; the website content itself is in **English only**. The owner decided (Nov 2026) not to make the site bilingual: don't add a BM version or language switcher. Official Malay programme names (e.g. in Training) stay as they are.
 
 ## Structure
 
