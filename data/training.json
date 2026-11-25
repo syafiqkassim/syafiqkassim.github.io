@@ -22,10 +22,6 @@
     "start": "2026-04-20"
   },
   {
-    "title": "Seminar Sejenak bersama YB Tan Sri Dato' Dr. Johari bin Abdul",
-    "start": "2026-04-16"
-  },
-  {
     "title": "Administrative Training: Sangfor Cyber Command and Endpoint Secure",
     "start": "2026-03-05"
   },
@@ -36,10 +32,6 @@
   {
     "title": "AI Cybersecurity: Digital Defense 5.0",
     "start": "2025-12-15"
-  },
-  {
-    "title": "Bengkel Ilmu Kesetiausahaan: Pengurusan Surat dan Rekod di Pejabat",
-    "start": "2025-12-09"
   },
   {
     "title": "Training Equipment: Fluke Network Tester",
@@ -72,11 +64,6 @@
     "start": "2024-08-30"
   },
   {
-    "title": "Program Transformasi Diri dan Organisasi Staf UUMIT",
-    "start": "2024-08-15",
-    "end": "2024-08-17"
-  },
-  {
     "title": "AI-Powered Threat Hunting for Ethical Hacking",
     "start": "2024-08-08"
   },
@@ -98,10 +85,6 @@
     "start": "2024-06-27"
   },
   {
-    "title": "Latihan Kebakaran UUM Information Technology (UUMIT)",
-    "start": "2024-06-26"
-  },
-  {
     "title": "Kursus Ancaman Siber: Kukuhkah Benteng Anda?",
     "start": "2024-06-26"
   },
@@ -114,29 +97,12 @@
     "start": "2024-06-19"
   },
   {
-    "title": "Kursus Induksi Khusus bagi Kumpulan Sokongan II dan III",
-    "start": "2024-06-10",
-    "end": "2024-06-13"
-  },
-  {
-    "title": "Latihan Kesedaran Halal Khas untuk Warga UUM 2024",
-    "start": "2024-05-28"
-  },
-  {
-    "title": "Kursus English for Communication",
-    "start": "2024-05-08"
-  },
-  {
     "title": "Kursus Pengurusan Keselamatan Maklumat dalam Organisasi",
     "start": "2024-04-01"
   },
   {
     "title": "MAPITA Knowledge Exchange (MAPITA KnowX)",
     "start": "2024-03-05"
-  },
-  {
-    "title": "Bicara Tunku Abdul Rahman Putra Al-Haj",
-    "start": "2024-02-21"
   },
   {
     "title": "Training Sangfor IAG",
@@ -155,26 +121,8 @@
     "start": "2023-09-21"
   },
   {
-    "title": "Program Transformasi Minda (PTM) Bil. 1/2023",
-    "start": "2023-08-20",
-    "end": "2023-08-24"
-  },
-  {
-    "title": "Program On-Boarding (O-Board)",
-    "start": "2023-05-11"
-  },
-  {
     "title": "Turnitin: Refresh Knowledge and Master the Skills",
     "start": "2023-03-07"
-  },
-  {
-    "title": "Bengkel Kesihatan Minda: Minda Sejahtera Hidup Ceria",
-    "start": "2023-03-02"
-  },
-  {
-    "title": "Program Rejimental Siri 1/2023",
-    "start": "2023-02-14",
-    "end": "2023-02-16"
   },
   {
     "title": "Secure Your Digital Life",
