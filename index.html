@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Syafiq Kassim</title>
+<meta property="og:title" content="Syafiq Kassim, Gtech.">
+<meta property="og:description" content="PhD candidate in Information Technology at UUM researching QR code phishing and cybersecurity. Assistant IT Officer at UUMIT.">
+<meta property="og:type" content="website">
+<meta name="description" content="Syafiq Kassim, Gtech. PhD candidate in Information Technology at the School of Computing, Universiti Utara Malaysia, and Assistant IT Officer at UUMIT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: single left-aligned column on a measured grid; a ledger of credentials in place of a hero image. */
+  :root {
+    --bg: #F4F5F1;
+    --surface: #FFFFFF;
+    --ink: #161B1A;
+    --muted: #59625F;
+    --line: #D8DCD4;
+    --accent: #1D5B4B;
+    --accent-soft: #E1EBE6;
+    --danger: #A3322A;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111514; --surface: #181E1C; --ink: #E8ECE9; --muted: #9AA5A0;
+      --line: #2A3330; --accent: #7CC9AE; --accent-soft: #1C2B26; --danger: #F08A80; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111514; --surface: #181E1C; --ink: #E8ECE9; --muted: #9AA5A0;
+    --line: #2A3330; --accent: #7CC9AE; --accent-soft: #1C2B26; --danger: #F08A80; color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 68rem; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 720px) {
+    .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  .label {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* Header */
+  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.5rem; }
+  .mark { font-family: var(--display); font-weight: 700; font-size: 1.125rem; color: var(--ink); text-decoration: none; }
+  .mark span { color: var(--accent); }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 0.9375rem; font-weight: 500; }
+  nav a:hover { color: var(--ink); }
+  @media (max-width: 640px) { nav { display: none; } }
+
+  /* Hero */
+  .hero .wrap { padding-block: 4rem 3.5rem; display: grid; gap: 2.5rem; }
+  .hero h1 {
+    font-size: clamp(3.25rem, 11vw, 7.5rem); font-weight: 700; line-height: 0.92; letter-spacing: -0.035em;
+  }
+  .hero h1 .post { font-size: 0.28em; font-weight: 500; letter-spacing: 0; color: var(--accent); vertical-align: 0.15em; margin-left: 0.35em; }
+  .lede { font-size: clamp(1.1875rem, 2.4vw, 1.4375rem); line-height: 1.45; max-width: 38ch; color: var(--ink); }
+  .lede em { font-style: normal; color: var(--muted); }
+
+  /* Credential ledger */
+  .ledger { border-top: 1px solid var(--ink); display: grid; }
+  .ledger-row {
+    display: grid; grid-template-columns: 9rem 1fr auto; gap: 1rem 2rem; align-items: baseline;
+    padding-block: 1.125rem; border-bottom: 1px solid var(--line);
+  }
+  .ledger-row > * { min-width: 0; }
+  .ledger-row .what { font-family: var(--display); font-weight: 500; font-size: 1.3125rem; line-height: 1.25; }
+  .ledger-row .where { color: var(--muted); font-size: 0.9375rem; }
+  .ledger-row .code { font-family: var(--mono); font-size: 0.8125rem; color: var(--accent); white-space: nowrap; }
+  @media (max-width: 720px) {
+    .ledger-row { grid-template-columns: 1fr auto; gap: 0.25rem 1rem; }
+    .ledger-row .label { grid-column: 1 / -1; }
+    .ledger-row .code { grid-row: 1; grid-column: 2; }
+  }
+
+  /* Sections */
+  section.block .wrap { padding-block: 4.5rem; display: grid; grid-template-columns: 14rem 1fr; gap: 1.5rem 3rem; }
+  section.block + section.block .wrap { border-top: 1px solid var(--line); }
+  section.block h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; }
+  .content { display: grid; gap: 1.25rem; max-width: 40rem; min-width: 0; }
+  .content p { color: var(--ink); }
+  .content p.quiet { color: var(--muted); }
+  @media (max-width: 820px) { section.block .wrap { grid-template-columns: 1fr; padding-block: 3.5rem; } }
+
+  .roles { display: grid; gap: 2rem; }
+  .role { display: grid; gap: 0.5rem; }
+  .role h3 { font-size: 1.25rem; font-weight: 500; }
+  .role .org { font-family: var(--mono); font-size: 0.8125rem; color: var(--accent); }
+  .role p { color: var(--muted); }
+
+  .callout {
+    background: var(--accent-soft); border-radius: 6px; padding: 1.5rem;
+    display: grid; gap: 0.75rem;
+  }
+  .callout dl { display: grid; grid-template-columns: auto 1fr; gap: 0.375rem 1.25rem; margin: 0; }
+  .callout dt { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); }
+  .callout dd { margin: 0; font-size: 0.9375rem; min-width: 0; }
+
+  .interests { display: grid; gap: 0.625rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+  .chips li { font-size: 0.9375rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 0.3rem 0.85rem; }
+  .pubs { display: grid; gap: 0.75rem; }
+  .pub { display: grid; gap: 0.375rem; border-left: 2px solid var(--accent); padding-left: 1.125rem; }
+  .pub h3 { font-size: 1.125rem; font-weight: 500; line-height: 1.35; }
+  .pub .authors { color: var(--muted); font-size: 0.9375rem; }
+  .pub .authors strong { color: var(--ink); font-weight: 600; }
+  .pub .venue { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); }
+
+  /* Writing list */
+  .writing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  .post-list { display: grid; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .post-item { border-bottom: 1px solid var(--line); }
+  .post-item a { display: grid; gap: 0.375rem; padding-block: 1.25rem; color: inherit; text-decoration: none; }
+  .post-item h3 { font-size: 1.3125rem; font-weight: 500; line-height: 1.3; transition: color .15s; }
+  .post-item a:hover h3 { color: var(--accent); }
+  .post-item .summary { color: var(--muted); }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+  .meta .tag { color: var(--accent); }
+  .empty { color: var(--muted); padding-block: 1.25rem; border-top: 1px solid var(--line); }
+
+  /* Reader */
+  #reader .wrap { padding-block: 2.5rem 4.5rem; }
+  .reader-inner { max-width: 42rem; display: grid; gap: 1.5rem; min-width: 0; }
+  .back { font-size: 0.9375rem; font-weight: 500; text-decoration: none; }
+  .reader-inner h1 { font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+  .reader-summary { font-size: 1.1875rem; color: var(--muted); line-height: 1.5; }
+  .article-body { display: grid; gap: 1.125rem; border-top: 1px solid var(--line); padding-top: 1.75rem; min-width: 0; }
+  .article-body h2 { font-size: 1.4375rem; font-weight: 700; margin-top: 1rem; }
+  .article-body ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+  .article-body p, .article-body li { overflow-wrap: break-word; }
+  .cite { font-family: var(--mono); font-size: 0.75em; color: var(--accent); vertical-align: 0.25em; }
+  .refs { display: grid; gap: 0.75rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .refs ol { margin: 0; padding-left: 1.75rem; display: grid; gap: 0.625rem; font-size: 0.9375rem; color: var(--muted); }
+  .refs li { overflow-wrap: anywhere; }
+  .owner-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  /* Buttons */
+  .btn {
+    font: 500 0.875rem var(--body); color: var(--accent); background: transparent;
+    border: 1px solid var(--accent); border-radius: 4px; padding: 0.45rem 0.95rem; cursor: pointer;
+  }
+  .btn:hover { background: var(--accent-soft); }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.primary:hover { filter: brightness(1.1); background: var(--accent); }
+  .btn.danger { color: var(--danger); border-color: var(--danger); }
+  .btn.danger:hover { background: transparent; filter: brightness(1.15); }
+  .btn:disabled { opacity: 0.55; cursor: progress; }
+
+  /* Editor */
+  #editor .wrap { padding-block: 2.5rem 4.5rem; }
+  .editor-inner { max-width: 46rem; display: grid; gap: 1.25rem; }
+  .editor-inner h1 { font-size: 2rem; font-weight: 700; }
+  .field { display: grid; gap: 0.375rem; }
+  .field label { font-weight: 600; font-size: 0.9375rem; }
+  .field .hint { font-size: 0.8125rem; color: var(--muted); }
+  .field input, .field textarea {
+    font: 400 1rem/1.5 var(--body); color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 4px; padding: 0.6rem 0.75rem; width: 100%;
+  }
+  .field textarea { resize: vertical; }
+  .field textarea.mono { font-family: var(--mono); font-size: 0.875rem; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+  .status { font-size: 0.9375rem; color: var(--muted); min-height: 1.5em; }
+  .status.err { color: var(--danger); }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.5rem; }
+  .fact { display: grid; gap: 0.25rem; border-top: 1px solid var(--line); padding-top: 0.875rem; }
+  .fact strong { font-family: var(--display); font-weight: 500; font-size: 1.125rem; }
+
+  /* Contact */
+  .contact-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+  .email {
+    font-family: var(--mono); font-size: clamp(1rem, 3.2vw, 1.375rem); color: var(--ink);
+    user-select: all; overflow-wrap: anywhere;
+  }
+
+  footer .wrap {
+    padding-block: 2rem 3rem; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1, .lede, .ledger { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) both; }
+    .lede { animation-delay: 0.08s; }
+    .ledger { animation-delay: 0.16s; }
+    @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="mark" href="#top">Syafiq Kassim<span>.</span></a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Syafiq Kassim<span class="post">Gtech.</span></h1>
+      <p class="lede">Doctoral researcher in cybersecurity and explainable AI, and Assistant IT Officer at Universiti Utara Malaysia. <em>Working where research meets the systems a campus runs on.</em></p>
+
+      <div class="ledger" role="list" aria-label="Current positions and credentials">
+        <div class="ledger-row" role="listitem">
+          <span class="label">Study</span>
+          <div>
+            <div class="what">PhD in Information Technology</div>
+            <div class="where">School of Computing, Universiti Utara Malaysia</div>
+          </div>
+          <span class="code">SOC · UUM</span>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <span class="label">Role</span>
+          <div>
+            <div class="what">Assistant IT Officer</div>
+            <div class="where">UUM Information Technology (UUMIT)</div>
+          </div>
+          <span class="code">UUMIT</span>
+        </div>
+        <div class="ledger-row" role="listitem">
+          <span class="label">Registration</span>
+          <div>
+            <div class="what">Graduate Technologist</div>
+            <div class="where">Malaysia Board of Technologists</div>
+          </div>
+          <span class="code">MBOT · Gtech.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <div class="content">
+        <p>I'm Syafiq Kassim, a PhD candidate at the School of Computing, Universiti Utara Malaysia, and an Assistant IT Officer at UUMIT, the university's IT centre. My work runs on two tracks that feed each other: day-to-day responsibility for IT services used across the campus, and doctoral research into how artificial intelligence can defend those systems, and how its decisions can be made explainable to the people who rely on them.</p>
+        <p>I'm registered with the Malaysia Board of Technologists as a Graduate Technologist, which recognises professional competence in applied technology and commits me to its code of conduct and continuing professional development.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <h2>Work</h2>
+      <div class="content roles">
+        <article class="role">
+          <span class="org">UUMIT · Universiti Utara Malaysia</span>
+          <h3>Assistant IT Officer</h3>
+          <p>Supporting the university's IT operations, from the services staff and students rely on every day to the infrastructure behind them. The role keeps me close to real users, real constraints and real systems at institutional scale.</p>
+        </article>
+        <article class="role">
+          <span class="org">MBOT · Malaysia Board of Technologists</span>
+          <h3>Graduate Technologist (Gtech.)</h3>
+          <p>Professional registration under the Technologists and Technicians Act 2015 (Act 768), in the field of information and computing technology.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <h2>Research</h2>
+      <div class="content">
+        <p>My doctoral study sits within the School of Computing at UUM, where I'm pursuing a PhD in Information Technology. Working inside a university IT department gives the research a practical anchor: questions come from systems that are in production, and findings can be tested where they matter.</p>
+        <div class="interests">
+          <span class="label">Research interests</span>
+          <ul class="chips">
+            <li>QR code phishing</li>
+            <li>Cybersecurity</li>
+            <li>AI in cybersecurity</li>
+            <li>Explainable AI (XAI)</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <span class="label">Programme</span>
+          <dl>
+            <dt>Degree</dt><dd>Doctor of Philosophy (Information Technology)</dd>
+            <dt>School</dt><dd>School of Computing (SOC)</dd>
+            <dt>College</dt><dd>College of Arts and Sciences, UUM</dd>
+            <dt>Campus</dt><dd>Sintok, Kedah, Malaysia</dd>
+          </dl>
+        </div>
+        <div class="pubs">
+          <span class="label">Selected publication</span>
+          <article class="pub">
+            <h3>Color-Based Ripeness Classification of Oil Palm Fresh Fruit Bunches Using Convolution Neural Networks and Data Augmentation</h3>
+            <p class="authors">J. A. Bakar, M. A. M. Kehail, <strong>S. Kassim</strong>, R. Saravanan, Z. W. Cheng, et al.</p>
+            <p class="venue">IEEE 7th International Conference, 2024</p>
+          </article>
+        </div>
+        <p><a href="https://scholar.google.com/citations?user=qszH-ScAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full publication list on Google Scholar &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="writing">
+    <div class="wrap">
+      <h2>Writing</h2>
+      <div class="content">
+        <div class="writing-head">
+          <p class="quiet">Articles on cybersecurity, QR phishing and AI, written for a general audience.</p>
+          <button class="btn primary" id="new-post-btn" type="button" hidden>New article</button>
+        </div>
+        <ul class="post-list" id="post-list"></ul>
+        <p class="empty" id="post-empty" hidden>No articles yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="content">
+        <p>For research collaboration, speaking or professional enquiries, email me directly.</p>
+        <div class="contact-line">
+          <span class="email" id="email">syafiqkassim@gmail.com</span>
+          <button class="btn" id="copy-btn" type="button">Copy email</button>
+        </div>
+        <div class="facts">
+          <div class="fact"><span class="label">Based in</span><strong>Sintok, Kedah</strong></div>
+          <div class="fact"><span class="label">Institution</span><strong>Universiti Utara Malaysia</strong></div>
+          <div class="fact"><span class="label">Languages</span><strong>Malay, English</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section id="reader" hidden aria-live="polite">
+  <div class="wrap">
+    <article class="reader-inner">
+      <a class="back" href="#writing">&larr; All articles</a>
+      <div class="meta" id="r-meta"></div>
+      <h1 id="r-title"></h1>
+      <p class="reader-summary" id="r-summary"></p>
+      <div class="owner-bar" id="r-owner" hidden>
+        <button class="btn" id="r-edit" type="button">Edit article</button>
+        <button class="btn danger" id="r-delete" type="button">Delete</button>
+        <span class="status" id="r-status"></span>
+      </div>
+      <div class="article-body" id="r-body"></div>
+      <div class="refs" id="r-refs-wrap">
+        <span class="label">References</span>
+        <ol id="r-refs"></ol>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="editor" hidden>
+  <div class="wrap">
+    <form class="editor-inner" id="editor-form" novalidate>
+      <a class="back" href="#writing" id="ed-cancel-link">&larr; Back without saving</a>
+      <h1 id="ed-heading">New article</h1>
+      <div class="field">
+        <label for="ed-title">Title</label>
+        <input id="ed-title" type="text" required maxlength="200">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="ed-date">Date</label>
+          <input id="ed-date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="ed-tags">Tags</label>
+          <input id="ed-tags" type="text" placeholder="QR phishing, Cybersecurity">
+          <span class="hint">Separate tags with commas.</span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="ed-summary">Summary</label>
+        <textarea id="ed-summary" rows="2" maxlength="400"></textarea>
+        <span class="hint">One or two sentences shown in the article list.</span>
+      </div>
+      <div class="field">
+        <label for="ed-body">Article</label>
+        <textarea id="ed-body" rows="20" required></textarea>
+        <span class="hint">Leave a blank line between paragraphs. Start a line with "## " for a heading and "- " for a list item. Cite sources as [1], [2].</span>
+      </div>
+      <div class="field">
+        <label for="ed-refs">References</label>
+        <textarea id="ed-refs" class="mono" rows="7"></textarea>
+        <span class="hint">One reference per line, in order. Links starting with https:// become clickable.</span>
+      </div>
+      <div class="owner-bar">
+        <button class="btn primary" id="ed-save" type="submit">Publish article</button>
+        <a class="btn" href="#writing" id="ed-cancel">Cancel</a>
+      </div>
+      <p class="status" id="ed-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="label">© 2026 Syafiq Kassim, Gtech.</span>
+    <span class="label">6.47° N, 100.50° E</span>
+  </div>
+</footer>
+
+<script type="application/json" id="articles-data">[{"slug":"why-qr-codes-became-a-phishing-tool","title":"Why QR Codes Have Become a Phishing Tool","date":"2026-11-25","tags":["QR phishing","Cybersecurity","Malaysia"],"summary":"QR code scams in Malaysia rose from 223 cases in 2023 to 5,907 in 2025. How QR phishing works, why people fall for it, and how to protect yourself.","body":"QR codes are now part of daily life in Malaysia. We scan them to pay with DuitNow QR, to pay for parking, to open a restaurant menu or to register for an event. That habit is exactly what makes them useful to scammers.\n\n## From the factory floor to everyday payments\n\nThe QR (Quick Response) code was invented in 1994 by DENSO WAVE in Japan, originally to track automotive parts during manufacturing [1]. It was designed to be read regardless of orientation, and to stay readable even when part of the code is damaged or covered [2]. The same strengths help attackers. A QR code can be printed, stuck on a wall or sent in an email, and it will still scan.\n\n## What QR phishing is\n\nQR phishing, often called quishing, replaces an ordinary link with a QR code. Scanning the code opens a fake website that asks for login or banking details, or leads to malware that gives a criminal access to the phone [4]. The core problem is simple: people cannot read a QR code. A text link can be checked before it is clicked, but a QR code reveals nothing about where it leads until it has been scanned.\n\nThe threat is not new. In 2013, researchers at Carnegie Mellon University studied what they called QRishing [2]. They put up posters with QR codes in 139 locations, and over four weeks the codes were scanned by 225 people who went on to visit the linked websites. Their survey suggested that curiosity is the biggest reason people scan. In a smaller observation experiment, 85% of the people who scanned a code went on to open the link.\n\n## The numbers in Malaysia\n\nAccording to the Bukit Aman Commercial Crime Investigation Department (CCID), Malaysia recorded 11,919 QR code scam cases with losses of RM80.86 million between January 2023 and June 2026 [3]:\n\n- 2023: 223 cases, RM4.59 million in losses\n- 2024: 655 cases, RM6.76 million\n- 2025: 5,907 cases, RM40.85 million\n- January to June 2026: 5,134 cases, RM28.67 million\n\nThe number of cases in 2025 was more than 26 times the number in 2023, and the first six months of 2026 came close to the total for the whole of 2025.\n\n## Common tactics\n\n- A fake QR code sticker placed over a genuine one, for example on a parking meter [4][5].\n- A QR code in an email or text message you were not expecting, often urging you to act immediately [5].\n- Urgent requests for payment, refunds, prizes or account verification that come with a QR code [3].\n- A message claiming that a payment failed and can only be completed by scanning a QR code [4].\n- QR codes that lead to app downloads or carry malware [4].\n\n## How to protect yourself\n\n- After scanning, check the web address before you open it, and make sure it is the site you expected [4][5].\n- Look closely at physical QR codes for a sticker placed on top of the original [4].\n- Do not scan QR codes in emails or text messages you were not expecting, especially codes sent by people you do not know [3][5].\n- Do not download apps through a QR code. Use your phone's official app store [4].\n- Avoid making payments on a site opened from a QR code. Type in an address you know and trust instead [4].\n- Keep your phone's operating system up to date, and protect your accounts with strong passwords and multi-factor authentication [5].\n- In Malaysia, if you suspect a scam or have lost money, call the National Scam Response Centre (NSRC) at 997 immediately. You can also check bank accounts, phone numbers and company names on the CCID SemakMule portal [6].\n\n## Why this matters to my research\n\nQR phishing is the focus of my PhD research at the School of Computing, Universiti Utara Malaysia. Most of the advice above depends on people checking every scan themselves, and the Malaysian figures show how often that fails. I will share more about the research here as the work progresses.","refs":["DENSO WAVE. History of QR Code. https://www.qrcode.com/en/history/","Vidas, T., Owusu, E., Wang, S., Zeng, C., Cranor, L. F., & Christin, N. (2013). QRishing: The susceptibility of smartphone users to QR code phishing attacks. In Financial Cryptography and Data Security: FC 2013 Workshops (LNCS 7862, pp. 52–69). Springer. https://doi.org/10.1007/978-3-642-41320-9_4","Yasmin Abdul Latif. (2026, September 3). Cops: QR code scams on the rise. The Star. https://www.thestar.com.my/news/nation/2026/09/03/cops-qr-code-scams-on-the-rise","Federal Bureau of Investigation, Internet Crime Complaint Center. (2022, January 18). Cybercriminals tampering with QR codes to steal victim funds (Alert No. I-011822-PSA). https://www.ic3.gov/PSA/2022/PSA220118","Puig, A. (2023, December 6). Scammers hide harmful links in QR codes to steal your information. Federal Trade Commission. https://consumer.ftc.gov/consumer-alerts/2023/12/scammers-hide-harmful-links-qr-codes-steal-your-information","The Star. (2026, September 3). Watch out for 'scan artists', public urged. https://www.thestar.com.my/news/nation/2026/09/03/watch-out-for-scan-artists-public-urged"]}]</script>
+
+<script id="site-script">
+(function () {
+  // Capture the page source before anything renders, so a save can rebuild the document with new article data.
+  const bodyParts = [];
+  const endScript = document.getElementById('site-script');
+  const escText = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  for (const n of Array.from(document.body.childNodes)) {
+    if (n.nodeType === 1 && n.id === 'articles-data') bodyParts.push(null);
+    else if (n.nodeType === 1) bodyParts.push(n.outerHTML);
+    else if (n.nodeType === 3) bodyParts.push(escText(n.textContent));
+    else if (n.nodeType === 8) bodyParts.push('<!--' + n.data + '-->');
+    if (n === endScript) break;
+  }
+  const headStyle = document.head.querySelector('style');
+  const resetCss = headStyle ? headStyle.textContent : '';
+
+  let articles = [];
+  try { articles = JSON.parse(document.getElementById('articles-data').textContent) || []; } catch (e) { articles = []; }
+
+  const $ = id => document.getElementById(id);
+  const sortByDate = list => list.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const fmtDate = iso => {
+    const d = new Date(iso + 'T00:00:00');
+    return isNaN(d) ? iso : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+  const readMins = text => Math.max(1, Math.round((text || '').split(/\s+/).filter(Boolean).length / 200));
+  const slugify = s => (s || 'article').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'article';
+
+  function metaInto(el, a) {
+    el.textContent = '';
+    const parts = [fmtDate(a.date), readMins(a.body) + ' min read'];
+    parts.forEach(t => { const s = document.createElement('span'); s.textContent = t; el.appendChild(s); });
+    (a.tags || []).forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = '#' + t; el.appendChild(s); });
+  }
+
+  // Inline text with [n] citations
+  function inlineInto(el, text) {
+    text.split(/(\[\d+\])/).forEach(chunk => {
+      if (/^\[\d+\]$/.test(chunk)) { const s = document.createElement('span'); s.className = 'cite'; s.textContent = chunk; el.appendChild(s); }
+      else if (chunk) el.appendChild(document.createTextNode(chunk));
+    });
+  }
+  function linkify(el, text) {
+    text.split(/(https:\/\/\S+)/).forEach(chunk => {
+      if (/^https:\/\/\S+$/.test(chunk)) {
+        const a = document.createElement('a'); a.href = chunk; a.textContent = chunk; a.target = '_blank'; a.rel = 'noopener'; el.appendChild(a);
+      } else if (chunk) el.appendChild(document.createTextNode(chunk));
+    });
+  }
+  function renderBody(el, body) {
+    el.textContent = '';
+    (body || '').split(/\n\s*\n/).map(b => b.trim()).filter(Boolean).forEach(block => {
+      const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+      if (lines.length === 1 && lines[0].startsWith('## ')) {
+        const h = document.createElement('h2'); h.textContent = lines[0].slice(3); el.appendChild(h);
+      } else if (lines.every(l => l.startsWith('- '))) {
+        const ul = document.createElement('ul');
+        lines.forEach(l => { const li = document.createElement('li'); inlineInto(li, l.slice(2)); ul.appendChild(li); });
+        el.appendChild(ul);
+      } else {
+        const p = document.createElement('p'); inlineInto(p, lines.join(' ')); el.appendChild(p);
+      }
+    });
+  }
+
+  function renderList() {
+    const list = $('post-list'); list.textContent = '';
+    const sorted = sortByDate(articles);
+    $('post-empty').hidden = sorted.length > 0;
+    sorted.forEach(a => {
+      const li = document.createElement('li'); li.className = 'post-item';
+      const link = document.createElement('a'); link.href = '#a-' + a.slug;
+      const meta = document.createElement('div'); meta.className = 'meta'; metaInto(meta, a);
+      const h = document.createElement('h3'); h.textContent = a.title;
+      link.append(meta, h);
+      if (a.summary) { const p = document.createElement('p'); p.className = 'summary'; p.textContent = a.summary; link.appendChild(p); }
+      li.appendChild(link); list.appendChild(li);
+    });
+  }
+
+  let current = null;
+  let canEdit = false, artifactApi = null, editingSlug = null;
+  function showReader(a) {
+    current = a;
+    metaInto($('r-meta'), a);
+    $('r-title').textContent = a.title;
+    $('r-summary').textContent = a.summary || '';
+    $('r-summary').hidden = !a.summary;
+    renderBody($('r-body'), a.body);
+    const refs = $('r-refs'); refs.textContent = '';
+    (a.refs || []).forEach(r => { const li = document.createElement('li'); linkify(li, r); refs.appendChild(li); });
+    $('r-refs-wrap').hidden = !(a.refs || []).length;
+    resetDelete();
+    $('r-status').textContent = '';
+    document.title = a.title + ' · Syafiq Kassim';
+  }
+
+  function route() {
+    const h = location.hash;
+    const main = $('top'), reader = $('reader'), editor = $('editor');
+    if (h.startsWith('#a-')) {
+      const a = articles.find(x => x.slug === h.slice(3));
+      if (a) {
+        showReader(a);
+        main.hidden = true; editor.hidden = true; reader.hidden = false;
+        window.scrollTo(0, 0); return;
+      }
+    }
+    if (h === '#write' && canEdit) {
+      main.hidden = true; reader.hidden = true; editor.hidden = false;
+      window.scrollTo(0, 0); return;
+    }
+    const wasHidden = main.hidden;
+    main.hidden = false; reader.hidden = true; editor.hidden = true;
+    document.title = 'Syafiq Kassim';
+    if (wasHidden) {
+      const target = h && h.length > 1 ? document.getElementById(h.slice(1)) : null;
+      if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
+    }
+  }
+
+  renderList();
+  route();
+  window.addEventListener('hashchange', route);
+
+  // Copy email
+  $('copy-btn').addEventListener('click', () => {
+    const btn = $('copy-btn'), email = $('email');
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy email'; }, 1800); };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(email);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, press Ctrl+C';
+    };
+    try { navigator.clipboard.writeText(email.textContent.trim()).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  // ---- Owner editing (only for people who can edit this artifact) ----
+
+  function buildDocument(list) {
+    const json = JSON.stringify(list).replace(/</g, '\\u003c');
+    const dataTag = '<script type="application/json" id="articles-data">' + json + '<\/script>';
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' +
+      resetCss + '</style></head><body>' + bodyParts.map(p => p === null ? dataTag : p).join('') + '</body></html>';
+  }
+
+  async function save(list, statusEl, btn) {
+    statusEl.classList.remove('err');
+    statusEl.textContent = 'Publishing…';
+    if (btn) btn.disabled = true;
+    try {
+      await artifactApi.publish(buildDocument(list));
+      statusEl.textContent = 'Published. Reloading the page…';
+    } catch (e) {
+      statusEl.classList.add('err');
+      const code = e && e.code;
+      if (code === 'conflict') statusEl.textContent = 'Another change was saved at the same time, so this one was not kept. Copy your text, wait for the page to reload, then try again.';
+      else if (code === 'not_granted' || code === 'not_writer') statusEl.textContent = 'You do not have permission to change this page.';
+      else statusEl.textContent = 'Could not publish: ' + ((e && e.message) || 'unknown error') + '. Your text is still in the form; try again.';
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  function openEditor(a) {
+    editingSlug = a ? a.slug : null;
+    $('ed-heading').textContent = a ? 'Edit article' : 'New article';
+    $('ed-title').value = a ? a.title : '';
+    $('ed-date').value = a ? a.date : new Date().toISOString().slice(0, 10);
+    $('ed-tags').value = a ? (a.tags || []).join(', ') : '';
+    $('ed-summary').value = a ? (a.summary || '') : '';
+    $('ed-body').value = a ? a.body : '';
+    $('ed-refs').value = a ? (a.refs || []).join('\n') : '';
+    $('ed-status').textContent = '';
+    $('ed-save').disabled = false;
+    location.hash = 'write';
+  }
+
+  $('editor-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const title = $('ed-title').value.trim(), body = $('ed-body').value.trim();
+    const status = $('ed-status');
+    if (!title || !body) { status.classList.add('err'); status.textContent = 'Add a title and the article text before publishing.'; return; }
+    let slug = editingSlug;
+    if (!slug) {
+      const base = slugify(title); slug = base; let i = 2;
+      while (articles.some(x => x.slug === slug)) slug = base + '-' + (i++);
+    }
+    const entry = {
+      slug, title,
+      date: $('ed-date').value || new Date().toISOString().slice(0, 10),
+      tags: $('ed-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+      summary: $('ed-summary').value.trim(),
+      body,
+      refs: $('ed-refs').value.split('\n').map(r => r.trim()).filter(Boolean)
+    };
+    const next = articles.filter(x => x.slug !== slug).concat([entry]);
+    save(sortByDate(next), status, $('ed-save'));
+  });
+
+  let deleteArmed = false;
+  function resetDelete() { deleteArmed = false; $('r-delete').textContent = 'Delete'; }
+  $('r-delete').addEventListener('click', () => {
+    if (!current) return;
+    if (!deleteArmed) { deleteArmed = true; $('r-delete').textContent = 'Confirm delete'; return; }
+    save(articles.filter(x => x.slug !== current.slug), $('r-status'), $('r-delete'));
+  });
+  $('r-edit').addEventListener('click', () => { if (current) openEditor(current); });
+  $('new-post-btn').addEventListener('click', () => openEditor(null));
+
+  (async () => {
+    if (!window.claude || typeof window.claude.use !== 'function') return;
+    try {
+      const [api, user] = await Promise.all([window.claude.use('artifact'), window.claude.use('user')]);
+      if (!api || !user) return;
+      if (!(await user.canEdit())) return;
+      artifactApi = api; canEdit = true;
+      $('new-post-btn').hidden = false;
+      $('r-owner').hidden = false;
+      route();
+    } catch (e) { /* read-only view */ }
+  })();
+})();
+</script>
+
+</body>
+</html>
