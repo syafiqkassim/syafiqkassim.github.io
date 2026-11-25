@@ -154,6 +154,21 @@
   .meta .tag { color: var(--accent); }
   .empty { color: var(--muted); padding-block: 1.25rem; border-top: 1px solid var(--line); }
 
+  /* Training: one collapsible group per year, newest open */
+  .training { display: grid; border-top: 1px solid var(--line); }
+  .t-year { border-bottom: 1px solid var(--line); }
+  .t-year summary { display: flex; align-items: baseline; gap: 0.75rem; padding-block: 1rem; cursor: pointer; list-style: none; }
+  .t-year summary::-webkit-details-marker { display: none; }
+  .t-year summary::before { content: "+"; font-family: var(--mono); color: var(--accent); width: 1ch; }
+  .t-year[open] summary::before { content: "\2212"; }
+  .t-year .yr { font-family: var(--display); font-size: 1.25rem; font-weight: 700; }
+  .t-year .count { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+  .t-list { list-style: none; margin: 0; padding: 0 0 1rem; display: grid; }
+  .t-list li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; padding-block: 0.6rem; border-top: 1px dashed var(--line); }
+  .t-date { font-family: var(--mono); font-size: 0.8125rem; color: var(--muted); padding-top: 0.15rem; }
+  .t-title { overflow-wrap: break-word; }
+  @media (max-width: 560px) { .t-list li { grid-template-columns: 1fr; gap: 0.125rem; } }
+
   /* Reader */
   #reader .wrap { padding-block: 2.5rem 4.5rem; }
   .reader-inner { max-width: 42rem; display: grid; gap: 1.5rem; min-width: 0; }
@@ -234,6 +249,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#research">Research</a></li>
+        <li><a href="#training">Training</a></li>
         <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -336,6 +352,16 @@
           </article>
         </div>
         <p><a href="https://scholar.google.com/citations?user=qszH-ScAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full publication list on Google Scholar &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="training" hidden>
+    <div class="wrap">
+      <h2>Training</h2>
+      <div class="content">
+        <p class="quiet">Courses, workshops and seminars I have attended, newest first.</p>
+        <div class="training" id="training-list"></div>
       </div>
     </div>
   </section>
@@ -595,6 +621,52 @@
 
   route();
   window.addEventListener('hashchange', route);
+
+  // Training list lives in data/training.json (also edited through the CMS).
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const isoDate = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v)) ? v.slice(0, 10) : '';
+  function fmtRange(start, end) {
+    const [y1, m1, d1] = start.split('-').map(Number);
+    if (!end || end <= start) return d1 + ' ' + MONTHS[m1 - 1];
+    const [y2, m2, d2] = end.split('-').map(Number);
+    if (y1 === y2 && m1 === m2) return d1 + '\u2013' + d2 + ' ' + MONTHS[m1 - 1];
+    if (y1 === y2) return d1 + ' ' + MONTHS[m1 - 1] + ' \u2013 ' + d2 + ' ' + MONTHS[m2 - 1];
+    return d1 + ' ' + MONTHS[m1 - 1] + ' ' + y1 + ' \u2013 ' + d2 + ' ' + MONTHS[m2 - 1] + ' ' + y2;
+  }
+  function renderTraining(list) {
+    const items = list
+      .map(t => ({ title: (t && typeof t.title === 'string') ? t.title.trim() : '', start: isoDate(t && t.start), end: isoDate(t && t.end) }))
+      .filter(t => t.title && t.start)
+      .sort((a, b) => b.start.localeCompare(a.start));
+    const box = $('training-list'); box.textContent = '';
+    const years = [];
+    items.forEach(t => {
+      const y = t.start.slice(0, 4);
+      if (!years.length || years[years.length - 1].y !== y) years.push({ y, items: [] });
+      years[years.length - 1].items.push(t);
+    });
+    years.forEach((g, i) => {
+      const det = document.createElement('details'); det.className = 't-year'; if (i === 0) det.open = true;
+      const sum = document.createElement('summary');
+      const yr = document.createElement('span'); yr.className = 'yr'; yr.textContent = g.y;
+      const ct = document.createElement('span'); ct.className = 'count'; ct.textContent = g.items.length + (g.items.length === 1 ? ' programme' : ' programmes');
+      sum.append(yr, ct); det.appendChild(sum);
+      const ul = document.createElement('ul'); ul.className = 't-list';
+      g.items.forEach(t => {
+        const li = document.createElement('li');
+        const d = document.createElement('span'); d.className = 't-date'; d.textContent = fmtRange(t.start, t.end);
+        const n = document.createElement('span'); n.className = 't-title'; n.textContent = t.title;
+        li.append(d, n); ul.appendChild(li);
+      });
+      det.appendChild(ul); box.appendChild(det);
+    });
+    $('training').hidden = items.length === 0;
+    if (items.length && location.hash === '#training' && !$('top').hidden) $('training').scrollIntoView();
+  }
+  fetch('data/training.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(list => { if (Array.isArray(list)) renderTraining(list); })
+    .catch(() => {});
 
   // Articles live in data/articles.json (edited through the CMS at /admin). Fall back to the inline copy if it can't load.
   fetch('data/articles.json', { cache: 'no-cache' })

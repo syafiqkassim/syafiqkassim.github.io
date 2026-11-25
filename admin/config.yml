@@ -96,3 +96,27 @@ collections:
         required: false
         hint: "One source per item, in citation order ([1] = first). Only https:// links become clickable. Every fact or statistic needs a real source."
         field: { name: ref, label: Reference, widget: text }
+
+  - name: training
+    label: Training
+    label_singular: Training programme
+    description: Courses, workshops and seminars shown in the Training section, grouped by year (newest first).
+    file: data/training.json
+    identifier_field: title
+    summary: "{{start}} · {{title}}"
+    sortable_fields: [start, title]
+    fields:
+      - name: title
+        label: Programme name
+        widget: string
+        hint: Use normal capitalisation rather than ALL CAPS. Malay or English is fine.
+      - name: start
+        label: Start date
+        widget: datetime
+        type: date
+      - name: end
+        label: End date
+        widget: datetime
+        type: date
+        required: false
+        hint: Leave empty for a one-day programme.

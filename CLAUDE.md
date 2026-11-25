@@ -9,7 +9,7 @@ Personal academic website of Syafiq Kassim, Gtech. (PhD candidate, School of Com
 
 Almost everything is in `index.html`: inline CSS, inline JS, no framework, no build. Articles are in `data/articles.json`; the CMS lives in `admin/`. Do not add a build tool, package.json or extra frameworks.
 
-Sections (in order, each `<section class="block" id="...">`): `about`, `work`, `research`, `writing`, `contact`. The hero has a "ledger" of credentials (Study / Role / Registration).
+Sections (in order, each `<section class="block" id="...">`): `about`, `work`, `research`, `training`, `writing`, `contact`. The `training` section is filled from `data/training.json` (array of `{title, start: "YYYY-MM-DD", end?}`; multi-day courses use one entry with `end`), grouped by year with the newest year open; it is also editable in the CMS. The hero has a "ledger" of credentials (Study / Role / Registration).
 
 ## Adding or editing an article
 
