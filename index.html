@@ -329,6 +329,7 @@
   .p-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; }
   .p-type { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 4px; padding: 0.1rem 0.5rem; color: var(--accent); background: var(--accent-soft); }
   .p-type.lab { color: var(--cyan); background: color-mix(in srgb, var(--cyan) 12%, transparent); }
+  .p-type.side-project { color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); }
   .p-type.research { color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
   .p-period { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
   .project h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.3; }
@@ -991,7 +992,7 @@
     .catch(() => {});
 
   // Projects live in data/projects.json (also edited through the CMS). Shown in file order; hidden while empty.
-  const P_TYPES = ['Work', 'Lab', 'Research'];
+  const P_TYPES = ['Work', 'Side project', 'Lab', 'Research'];
   let pFilter = 'All';
   function drawProjects() {
     const box = $('projects-list'); box.textContent = '';
@@ -999,7 +1000,7 @@
     SITE.projects.filter(p => pFilter === 'All' || p.type === pFilter).forEach(p => {
       const a = mk('article', 'project card');
       const top = mk('div', 'p-top');
-      if (p.type) top.appendChild(mk('span', 'p-type ' + p.type.toLowerCase(), p.type));
+      if (p.type) top.appendChild(mk('span', 'p-type ' + p.type.toLowerCase().replace(/\s+/g, '-'), p.type));
       if (p.period) top.appendChild(mk('span', 'p-period', p.period));
       a.appendChild(top);
       a.appendChild(mk('h3', null, p.title));

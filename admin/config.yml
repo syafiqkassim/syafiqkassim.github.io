@@ -162,8 +162,8 @@ collections:
       - name: type
         label: Type
         widget: select
-        options: [Work, Lab, Research]
-        hint: "Work = done in your job; Lab = personal/home lab or side project; Research = part of your PhD."
+        options: [Work, Side project, Lab, Research]
+        hint: "Work = done in your job; Side project = built for someone else outside work; Lab = personal/home lab; Research = part of your PhD."
       - name: period
         label: Period
         widget: string

@@ -6,6 +6,27 @@
     "challenge": "The university's IT operations centre needed continuous visibility of its network and services, and a quick way to get problems to the people who fix them.",
     "actions": "Deployed and configured Nagios Core (open source) to monitor the network and related services. Configured the Nagios web interface so the monitoring dashboard is published for operations staff, and built alert notifications to Telegram.",
     "result": "Staff in charge receive alerts on Telegram as problems occur, making it easier to coordinate and assign work to network and Wi-Fi technicians.",
-    "tools": ["Nagios Core", "Telegram alerts", "Network monitoring"]
+    "tools": [
+      "Nagios Core",
+      "Telegram alerts",
+      "Network monitoring"
+    ]
+  },
+  {
+    "title": "Personal academic website for a PhD applicant",
+    "type": "Side project",
+    "period": "2026 – present",
+    "role": "Built, deployed and maintain",
+    "challenge": "A client preparing to apply for PhD study in the UK in 2027 needed a professional online presence to present her research and profile.",
+    "actions": "Built the site with AI-assisted development (Claude), with sections for About, Research, Education, Activities, an Etsy shop, Q&A and Contact, in Malay and English. Deployed it on GitHub Pages with a custom domain and Cloudflare DNS, and continue to make changes when the client needs them.",
+    "result": "The client now has her own site to promote herself for PhD applications, at no hosting cost.",
+    "tools": [
+      "HTML/CSS/JavaScript",
+      "GitHub Pages",
+      "Cloudflare DNS",
+      "AI-assisted development"
+    ],
+    "link": "https://nazieraaziz.com",
+    "link_label": "Visit nazieraaziz.com"
   }
 ]
