@@ -49,7 +49,14 @@ Rules:
 
 ## Design
 
-Colour and font tokens are CSS variables on `:root` (light) with a dark-mode override under `prefers-color-scheme: dark` and `[data-theme="dark"]`. When changing colours, update **both** light and dark values. Fonts: Bricolage Grotesque (display), Instrument Sans (body), JetBrains Mono (labels). Keep it responsive (check at ~375px width; no horizontal scroll).
+"Security console" look aimed at cybersecurity employers (redesigned Nov 2026; the owner plans to apply for UK jobs in 2027). Colour tokens are CSS variables on `:root` (light) with dark overrides under `prefers-color-scheme: dark` and `[data-theme="dark"]`; update **both** when changing colours. A header toggle saves the theme in `localStorage`. Fonts: Space Grotesk (display), IBM Plex Sans (body), JetBrains Mono (labels/terminal). Keep it responsive (check at ~375px width; no horizontal scroll) and respect `prefers-reduced-motion`.
+
+Interactive parts live in `<script id="ui-script">` (after `site-script`):
+- Hero terminal: commands such as `help`, `whoami`, `skills`, `training`, `csr`, `writing`, `contact`, `sudo hire`. Text is in the `commands` object; keep it factual.
+- Typing role line (`roles` array), stats strip (counted from the data files via the `site:data` event / `window.SITE`), scrollspy, scroll reveal, mobile menu.
+- "Quish or legit?" lab in Research: `rounds` array of **fictional** scenarios and domains. Don't use real organisations' domains as phishing examples.
+- Training filter: tags are assigned from title keywords (`T_TAGS` in `site-script`); add keywords there if a new programme ends up untagged.
+- "Platforms and technologies I have been trained on" chips in Work are hard-coded and derived from `data/training.json`; only list things he actually trained on.
 
 ## Leftover editor code
 
