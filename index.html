@@ -322,6 +322,28 @@
   .t-none { padding: 1.25rem; color: var(--muted); }
   @media (max-width: 560px) { .t-list li { grid-template-columns: 1fr; gap: 0.125rem; } }
 
+  /* Projects */
+  .p-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .projects { display: grid; gap: 1rem; }
+  .project { display: grid; gap: 0.85rem; }
+  .p-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; }
+  .p-type { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 4px; padding: 0.1rem 0.5rem; color: var(--accent); background: var(--accent-soft); }
+  .p-type.lab { color: var(--cyan); background: color-mix(in srgb, var(--cyan) 12%, transparent); }
+  .p-type.research { color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+  .p-period { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+  .project h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.3; }
+  .content .p-role { color: var(--muted); font-size: 0.95rem; margin-top: -0.5rem; }
+  .p-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); }
+  .p-img.whole { object-fit: contain; padding: 0.5rem; }
+  .star { display: grid; gap: 0.6rem; margin: 0; }
+  .star > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; }
+  .star dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 0.2rem; }
+  .star dd { margin: 0; overflow-wrap: break-word; }
+  .star .result dd { color: var(--accent); font-weight: 500; }
+  @media (max-width: 560px) { .star > div { grid-template-columns: 1fr; gap: 0.1rem; } }
+  .project .chips li { font-size: 0.75rem; padding: 0.25rem 0.55rem; }
+  .p-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
   /* CSR */
   .csr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
   .csr-grid .role { align-content: start; }
@@ -420,6 +442,7 @@
       <nav id="site-nav" aria-label="Sections">
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#training">Training</a></li>
           <li><a href="#csr">CSR</a></li>
@@ -507,9 +530,20 @@
     </div>
   </section>
 
+  <section class="block" id="projects" hidden>
+    <div class="wrap">
+      <div class="sec-head"><span class="idx">02 / PROJECTS</span><h2>Projects</h2></div>
+      <div class="content">
+        <p class="quiet">Systems I have built, deployed or run, from production work to personal labs and research prototypes.</p>
+        <div class="p-tools" id="p-tools" role="group" aria-label="Filter projects"></div>
+        <div class="projects" id="projects-list"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="research">
     <div class="wrap">
-      <div class="sec-head"><span class="idx">02 / RESEARCH</span><h2>Research</h2></div>
+      <div class="sec-head"><span class="idx">03 / RESEARCH</span><h2>Research</h2></div>
       <div class="content">
         <p class="reveal">My doctoral study sits within the School of Computing at UUM, where I'm pursuing a PhD in Information Technology. Working inside a university IT department gives the research a practical anchor: questions come from systems that are in production, and findings can be tested where they matter.</p>
         <div class="interests reveal">
@@ -555,7 +589,7 @@
 
   <section class="block" id="training" hidden>
     <div class="wrap">
-      <div class="sec-head"><span class="idx">03 / TRAINING</span><h2>Training</h2></div>
+      <div class="sec-head"><span class="idx">04 / TRAINING</span><h2>Training</h2></div>
       <div class="content">
         <p class="quiet">Courses, workshops and seminars I have attended, newest first. Filter by area or search.</p>
         <div class="t-tools" id="t-tools" role="group" aria-label="Filter training"></div>
@@ -566,7 +600,7 @@
 
   <section class="block" id="csr" hidden>
     <div class="wrap">
-      <div class="sec-head"><span class="idx">04 / CSR</span><h2>CSR</h2></div>
+      <div class="sec-head"><span class="idx">05 / CSR</span><h2>CSR</h2></div>
       <div class="content">
         <p class="quiet">Community and environmental work I take part in beyond my day job.</p>
         <div class="csr-grid" id="csr-list"></div>
@@ -576,7 +610,7 @@
 
   <section class="block" id="writing">
     <div class="wrap">
-      <div class="sec-head"><span class="idx">05 / WRITING</span><h2>Writing</h2></div>
+      <div class="sec-head"><span class="idx">06 / WRITING</span><h2>Writing</h2></div>
       <div class="content">
         <div class="writing-head">
           <p class="quiet">Articles on cybersecurity, QR phishing and AI, written for a general audience.</p>
@@ -590,7 +624,7 @@
 
   <section class="block" id="work">
     <div class="wrap">
-      <div class="sec-head"><span class="idx">06 / WORK</span><h2>Work</h2></div>
+      <div class="sec-head"><span class="idx">07 / WORK</span><h2>Work</h2></div>
       <div class="content">
         <div class="roles">
           <article class="role card reveal">
@@ -627,7 +661,7 @@
 
   <section class="block" id="contact">
     <div class="wrap">
-      <div class="sec-head"><span class="idx">07 / CONTACT</span><h2>Contact</h2></div>
+      <div class="sec-head"><span class="idx">08 / CONTACT</span><h2>Contact</h2></div>
       <div class="content">
         <div class="card contact-card reveal">
           <span class="label">// open channel</span>
@@ -749,7 +783,7 @@
   try { articles = JSON.parse(document.getElementById('articles-data').textContent) || []; } catch (e) { articles = []; }
 
   const $ = id => document.getElementById(id);
-  const SITE = window.SITE = window.SITE || { training: [], csr: [], articles: [] };
+  const SITE = window.SITE = window.SITE || { training: [], csr: [], articles: [], projects: [] };
   const announce = () => document.dispatchEvent(new CustomEvent('site:data'));
   const sortByDate = list => list.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   const fmtDate = iso => {
@@ -954,6 +988,58 @@
   fetch('data/training.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
     .then(list => { if (Array.isArray(list)) renderTraining(list); })
+    .catch(() => {});
+
+  // Projects live in data/projects.json (also edited through the CMS). Shown in file order; hidden while empty.
+  const P_TYPES = ['Work', 'Lab', 'Research'];
+  let pFilter = 'All';
+  function drawProjects() {
+    const box = $('projects-list'); box.textContent = '';
+    const mk = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+    SITE.projects.filter(p => pFilter === 'All' || p.type === pFilter).forEach(p => {
+      const a = mk('article', 'project card');
+      const top = mk('div', 'p-top');
+      if (p.type) top.appendChild(mk('span', 'p-type ' + p.type.toLowerCase(), p.type));
+      if (p.period) top.appendChild(mk('span', 'p-period', p.period));
+      a.appendChild(top);
+      a.appendChild(mk('h3', null, p.title));
+      if (p.role) a.appendChild(mk('p', 'p-role', p.role));
+      if (p.image) { const img = mk('img', 'p-img' + (p.image_whole ? ' whole' : '')); img.src = p.image; img.alt = p.image_alt; img.loading = 'lazy'; img.decoding = 'async'; img.width = 1600; img.height = 900; a.appendChild(img); }
+      const dl = mk('dl', 'star');
+      [['Challenge', p.challenge, ''], ['What I did', p.actions, ''], ['Result', p.result, 'result']].forEach(([k, v, cls]) => {
+        if (!v) return; const row = mk('div', cls); row.append(mk('dt', null, k), mk('dd', null, v)); dl.appendChild(row);
+      });
+      if (dl.childNodes.length) a.appendChild(dl);
+      if (p.tools.length) { const ul = mk('ul', 'chips'); ul.setAttribute('aria-label', 'Tools'); p.tools.forEach(t => ul.appendChild(mk('li', null, t))); a.appendChild(ul); }
+      if (p.link) { const l = mk('div', 'p-links'); const x = mk('a', 'btn small', p.link_label || 'View project'); x.href = p.link; x.target = '_blank'; x.rel = 'noopener'; l.appendChild(x); a.appendChild(l); }
+      box.appendChild(a);
+    });
+  }
+  function renderProjects(list) {
+    const str = v => (typeof v === 'string') ? v.trim() : '';
+    SITE.projects = list.filter(p => p && str(p.title)).map(p => ({
+      title: str(p.title), type: P_TYPES.includes(str(p.type)) ? str(p.type) : '', period: str(p.period), role: str(p.role),
+      challenge: str(p.challenge), actions: str(p.actions), result: str(p.result),
+      tools: Array.isArray(p.tools) ? p.tools.map(str).filter(Boolean) : [],
+      link: /^https:\/\/\S+$/.test(str(p.link)) ? str(p.link) : '', link_label: str(p.link_label),
+      image: /^(\/images\/|https:\/\/)\S+$/.test(str(p.image)) ? str(p.image) : '', image_alt: str(p.image_alt), image_whole: p.image_whole === true
+    }));
+    const tools = $('p-tools'); tools.textContent = '';
+    const types = P_TYPES.filter(t => SITE.projects.some(p => p.type === t));
+    if (types.length > 1) ['All'].concat(types).forEach(name => {
+      const n = name === 'All' ? SITE.projects.length : SITE.projects.filter(p => p.type === name).length;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 't-filter'; b.setAttribute('aria-pressed', String(name === pFilter));
+      b.append(document.createTextNode(name)); const c = document.createElement('span'); c.className = 'n'; c.textContent = n; b.appendChild(c);
+      b.addEventListener('click', () => { pFilter = name; tools.querySelectorAll('.t-filter').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawProjects(); });
+      tools.appendChild(b);
+    });
+    drawProjects();
+    $('projects').hidden = SITE.projects.length === 0;
+    announce();
+  }
+  fetch('data/projects.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(list => { if (Array.isArray(list)) renderProjects(list); })
     .catch(() => {});
 
   // CSR / community involvement lives in data/csr.json (also edited through the CMS).
@@ -1198,7 +1284,7 @@
   const commands = {
     help() {
       line('Available commands:', 'dim');
-      [['whoami', 'who I am'], ['skills', 'focus areas and platforms'], ['research', 'my PhD in brief'], ['training', 'recent training (live from data)'], ['csr', 'community involvement'], ['writing', 'latest articles'], ['lab', 'open the QR phishing lab'], ['contact', 'how to reach me'], ['theme', 'toggle light / dark'], ['clear', 'clear the screen']]
+      [['whoami', 'who I am'], ['skills', 'focus areas and platforms'], ['projects', 'things I have built and run'], ['research', 'my PhD in brief'], ['training', 'recent training (live from data)'], ['csr', 'community involvement'], ['writing', 'latest articles'], ['lab', 'open the QR phishing lab'], ['contact', 'how to reach me'], ['theme', 'toggle light / dark'], ['clear', 'clear the screen']]
         .forEach(([c, d]) => rich([['  ' + c.padEnd(10), 'hi'], [d, 'dim']]));
     },
     whoami() {
@@ -1229,6 +1315,12 @@
       t.slice(0, 5).forEach(x => rich([['  ' + x.start + '  ', 'dim'], [x.title, '']]));
       go('training');
     },
+    projects() {
+      const p = (window.SITE && window.SITE.projects) || [];
+      if (!p.length) return line('Project write-ups are coming soon.', 'dim');
+      p.slice(0, 6).forEach(x => rich([['  [' + (x.type || 'project').toLowerCase() + '] ', 'cy'], [x.title, ''], [x.period ? '  ' + x.period : '', 'dim']]));
+      go('projects');
+    },
     csr() {
       const c = (window.SITE && window.SITE.csr) || [];
       if (!c.length) return line('No entries loaded yet.', 'warn');
@@ -1248,7 +1340,7 @@
     },
     theme() { setTheme(isDark() ? 'light' : 'dark'); line('Theme: ' + (isDark() ? 'dark' : 'light'), 'dim'); },
     clear() { out.textContent = ''; },
-    ls() { line('about  work  research  training  csr  writing  contact', 'cy'); },
+    ls() { line('about  projects  research  training  csr  writing  work  contact', 'cy'); },
     sudo(args) {
       if (/hire/.test(args)) { line('[sudo] permission granted.', 'hi'); line('Let’s talk: syafiqkassim@gmail.com'); go('contact'); }
       else line('Nice try. This incident will be reported. ;)', 'warn');

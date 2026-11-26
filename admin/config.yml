@@ -142,3 +142,80 @@ collections:
         widget: text
         required: false
         hint: Optional. One sentence in English about the organisation or what you did.
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    description: >-
+      Projects shown in the Projects section, in the order listed here (drag to reorder; put the strongest first).
+      Write in English. For work projects, never include IP addresses, server names, network layout, configurations or vulnerabilities.
+    file: data/projects.json
+    media_folder: /images/projects
+    public_folder: /images/projects
+    identifier_field: title
+    summary: "{{type}} · {{title}}"
+    fields:
+      - name: title
+        label: Project title
+        widget: string
+        hint: e.g. Web application firewall deployment
+      - name: type
+        label: Type
+        widget: select
+        options: [Work, Lab, Research]
+        hint: "Work = done in your job; Lab = personal/home lab or side project; Research = part of your PhD."
+      - name: period
+        label: Period
+        widget: string
+        required: false
+        hint: e.g. 2025 – present, or Mar 2024
+      - name: role
+        label: Your role
+        widget: string
+        required: false
+        hint: e.g. Lead administrator; Team member; Solo project
+      - name: challenge
+        label: Challenge
+        widget: text
+        required: false
+        hint: One or two sentences on the problem or goal.
+      - name: actions
+        label: What I did
+        widget: text
+        required: false
+        hint: What you personally set up, configured, built or managed.
+      - name: result
+        label: Result
+        widget: text
+        required: false
+        hint: The outcome, with numbers if you can (e.g. "Protects 40+ public web applications").
+      - name: tools
+        label: Tools and technologies
+        widget: list
+        required: false
+        field: { name: tool, label: Tool, widget: string }
+      - name: link
+        label: Link
+        widget: string
+        required: false
+        hint: Optional https:// link, e.g. a GitHub repository or write-up.
+      - name: link_label
+        label: Link text
+        widget: string
+        required: false
+        hint: e.g. View on GitHub. Defaults to "View project".
+      - name: image
+        label: Image or diagram
+        widget: image
+        required: false
+        choose_url: false
+        hint: Optional. Landscape 16:9 works best. Don't upload screenshots showing internal IPs, hostnames or user data.
+      - name: image_whole
+        label: Show whole image (no crop)
+        widget: boolean
+        required: false
+        default: false
+      - name: image_alt
+        label: Image description (alt text)
+        widget: string
+        required: false
