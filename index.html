@@ -1174,6 +1174,18 @@
     });
   }
   document.addEventListener('site:data', updateStats);
+
+  // Links like /#work: data-driven sections load late and push content down, so re-align to the target until the visitor scrolls.
+  let userMoved = false;
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(ev => window.addEventListener(ev, () => { userMoved = true; }, { once: true, passive: true }));
+  function alignHash() {
+    const id = location.hash.slice(1);
+    const el = id && /^[a-z]+$/.test(id) ? document.getElementById(id) : null;
+    if (userMoved || !el || el.hidden || !el.closest('main') || document.getElementById('top').hidden) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'instant' });
+  }
+  document.addEventListener('site:data', () => requestAnimationFrame(alignHash));
+  window.addEventListener('load', () => requestAnimationFrame(alignHash));
   updateStats();
 
   // ---- Terminal ----
