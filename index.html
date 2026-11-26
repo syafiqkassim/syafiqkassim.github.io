@@ -226,6 +226,9 @@
   .role h3 { font-size: 1.25rem; font-weight: 600; }
   .role .org { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); }
   .role p { color: var(--muted); }
+  .duties { margin: 0.25rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
+  .duties li { position: relative; padding-left: 1.25rem; font-size: 0.95rem; }
+  .duties li::before { content: "\203A"; position: absolute; left: 0.2rem; color: var(--accent); font-family: var(--mono); font-weight: 700; }
   .platforms { display: grid; gap: 0.75rem; }
   .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
   .chips li { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 0.35rem 0.7rem; transition: border-color .15s, color .15s; }
@@ -632,6 +635,13 @@
             <span class="org">UUMIT · Universiti Utara Malaysia</span>
             <h3>Assistant IT Officer</h3>
             <p>Supporting the university's IT operations, from the services staff and students rely on every day to the infrastructure behind them. The role keeps me close to real users, real constraints and real systems at institutional scale.</p>
+            <ul class="duties">
+              <li>Monitor the university's network and servers with Nagios, and keep device configuration and inventory up to date</li>
+              <li>Monitor endpoint and network security with Sangfor Endpoint Secure, Cyber Command and Stealth Threat Analytics</li>
+              <li>Track availability of key information systems against SLAs and report regularly to management</li>
+              <li>Provide first-level troubleshooting for network and server incidents</li>
+              <li>Contribute to WAF, Privileged Access Management, load balancer, storage and ISMS certification projects</li>
+            </ul>
           </article>
           <article class="role card reveal">
             <span class="org">MBOT · Malaysia Board of Technologists</span>
@@ -641,8 +651,12 @@
         </div>
         <p class="quiet disclaimer reveal">This is a personal website. The views and content here are my own and do not represent Universiti Utara Malaysia or UUMIT.</p>
         <div class="platforms reveal">
-          <span class="label">Platforms and technologies I have been trained on</span>
+          <span class="label">Platforms and technologies I work with or have trained on</span>
           <ul class="chips">
+            <li>Nagios Core</li>
+            <li>Sangfor Stealth Threat Analytics</li>
+            <li>Privileged Access Management</li>
+            <li>ISMS</li>
             <li>FortiWeb (WAF)</li>
             <li>Sangfor Cyber Command</li>
             <li>Sangfor Endpoint Secure</li>
@@ -1297,8 +1311,9 @@
     skills() {
       line('Focus areas', 'cy');
       line('  QR code phishing · AI in cybersecurity · Explainable AI · IT operations');
-      line('Trained on', 'cy');
-      line('  FortiWeb · Sangfor Cyber Command / Endpoint Secure / IAG · Active Directory');
+      line('Work with / trained on', 'cy');
+      line('  Nagios Core · Sangfor Cyber Command / Endpoint Secure / Stealth Threat Analytics');
+      line('  FortiWeb · PAM · ISMS · Sangfor IAG · Active Directory');
       line('  MDR · penetration testing · Vertica · Talend · data centre (DCFC)');
       go('work');
     },

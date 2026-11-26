@@ -1,15 +1,58 @@
 [
   {
-    "title": "Network monitoring with Nagios Core for an IT operations centre",
+    "title": "Network and server monitoring with Nagios Core for an IT operations centre",
     "type": "Work",
     "role": "Set up and managed independently",
-    "challenge": "The university's IT operations centre needed continuous visibility of its network and services, and a quick way to get problems to the people who fix them.",
-    "actions": "Deployed and configured Nagios Core (open source) to monitor the network and related services. Configured the Nagios web interface so the monitoring dashboard is published for operations staff, and built alert notifications to Telegram.",
-    "result": "Staff in charge receive alerts on Telegram as problems occur, making it easier to coordinate and assign work to network and Wi-Fi technicians.",
+    "challenge": "The university's IT operations centre needed continuous visibility of its network and servers, availability tracking against service-level agreements (SLAs), and a quick way to get problems to the people who fix them.",
+    "actions": "Deployed and configured Nagios Core (open source) to monitor the university's network devices and servers. Configured the Nagios web interface so the monitoring dashboard is published for operations staff, and built alert notifications to Telegram. Keep device configuration, inventory and monitoring data up to date, and prepare regular availability reports on key information systems for management.",
+    "result": "Staff in charge receive alerts on Telegram as problems occur, making it easier to coordinate and assign work to network and Wi-Fi technicians, and management gets regular availability reporting against SLAs.",
     "tools": [
       "Nagios Core",
       "Telegram alerts",
-      "Network monitoring"
+      "Network monitoring",
+      "Server monitoring",
+      "SLA reporting"
+    ]
+  },
+  {
+    "title": "Endpoint and network security monitoring",
+    "type": "Work",
+    "period": "2026",
+    "role": "Security monitoring",
+    "challenge": "The university needs to detect threats on its endpoints and across its network before they become incidents.",
+    "actions": "Monitor endpoint security with Sangfor Endpoint Secure, and network security with Sangfor Cyber Command and Stealth Threat Analytics. Provide first-level troubleshooting for network and server incidents.",
+    "tools": [
+      "Sangfor Endpoint Secure",
+      "Sangfor Cyber Command",
+      "Stealth Threat Analytics",
+      "Incident triage"
+    ]
+  },
+  {
+    "title": "Security and infrastructure rollouts: WAF, PAM, load balancing and storage",
+    "type": "Work",
+    "period": "2026",
+    "role": "Project team member",
+    "challenge": "The university is strengthening the security and availability of its ICT services and data centre.",
+    "actions": "Part of the project teams for a Web Application Firewall (WAF) to protect web applications, Privileged Access Management (PAM) to secure administrative access to ICT systems, a load balancer to improve system availability, and enterprise storage to support the data centre.",
+    "tools": [
+      "Web Application Firewall",
+      "Privileged Access Management",
+      "Load balancing",
+      "Enterprise storage",
+      "Data centre"
+    ]
+  },
+  {
+    "title": "Information Security Management System (ISMS) certification",
+    "type": "Work",
+    "period": "2026",
+    "role": "Project team member",
+    "challenge": "The university is working towards certification of its Information Security Management System.",
+    "actions": "Contribute to the ISMS certification project as part of the project team.",
+    "tools": [
+      "ISMS",
+      "Information security governance"
     ]
   },
   {
