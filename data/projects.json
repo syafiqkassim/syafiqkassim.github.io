@@ -17,7 +17,7 @@
     "type": "Side project",
     "period": "2026 – present",
     "role": "Built, deployed and maintain",
-    "challenge": "A client preparing to apply for PhD study in the UK in 2027 needed a professional online presence to present her research and profile.",
+    "challenge": "A researcher preparing PhD applications needed a professional online presence to present her research and profile.",
     "actions": "Built the site with AI-assisted development (Claude), with sections for About, Research, Education, Activities, an Etsy shop, Q&A and Contact, in Malay and English. Deployed it on GitHub Pages with a custom domain and Cloudflare DNS, and continue to make changes when the client needs them.",
     "result": "The client now has her own site to promote herself for PhD applications, at no hosting cost.",
     "tools": [
