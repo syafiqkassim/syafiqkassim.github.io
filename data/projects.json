@@ -12,7 +12,8 @@
       "Network monitoring",
       "Server monitoring",
       "SLA reporting"
-    ]
+    ],
+    "period": "2023 – present"
   },
   {
     "title": "Endpoint and network security monitoring",
@@ -29,30 +30,29 @@
     ]
   },
   {
-    "title": "Security and infrastructure rollouts: WAF, PAM, load balancing and storage",
+    "title": "Web Application Firewall operations",
     "type": "Work",
-    "period": "2026",
-    "role": "Project team member",
-    "challenge": "The university is strengthening the security and availability of its ICT services and data centre.",
-    "actions": "Part of the project teams for a Web Application Firewall (WAF) to protect web applications, Privileged Access Management (PAM) to secure administrative access to ICT systems, a load balancer to improve system availability, and enterprise storage to support the data centre.",
+    "period": "2026 – present",
+    "role": "Backup administrator",
+    "challenge": "The university's public web applications are protected by a Web Application Firewall (WAF), which needs trained cover whenever the primary administrator is unavailable.",
+    "actions": "Trained on the WAF and act as backup to the primary administrator, covering and monitoring the university's WAF.",
     "tools": [
       "Web Application Firewall",
-      "Privileged Access Management",
-      "Load balancing",
-      "Enterprise storage",
-      "Data centre"
+      "Web application security",
+      "Security monitoring"
     ]
   },
   {
-    "title": "Information Security Management System (ISMS) certification",
+    "title": "Privileged Access Management proof of concept and load balancer installation",
     "type": "Work",
     "period": "2026",
-    "role": "Project team member",
-    "challenge": "The university is working towards certification of its Information Security Management System.",
-    "actions": "Contribute to the ISMS certification project as part of the project team.",
+    "role": "PoC participant and installation support",
+    "challenge": "The IT department evaluated Privileged Access Management (PAM) to secure administrative access, and installed a load balancer to improve the availability of university systems.",
+    "actions": "Took part in the PAM proof of concept (PoC). Provided standby support during the vendor's installation of the load balancer.",
     "tools": [
-      "ISMS",
-      "Information security governance"
+      "Privileged Access Management",
+      "Proof of concept",
+      "Load balancing"
     ]
   },
   {
