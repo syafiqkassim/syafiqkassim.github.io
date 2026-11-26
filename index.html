@@ -204,7 +204,13 @@
   .content { display: grid; gap: 1.5rem; max-width: 46rem; min-width: 0; }
   .content p { color: var(--ink); }
   .content p.quiet { color: var(--muted); }
-  .content p.disclaimer { font-size: 0.85rem; border-left: 2px solid var(--line-strong); padding-left: 0.85rem; }
+  .notice { display: flex; gap: 0.85rem; align-items: flex-start; border: 1px solid color-mix(in srgb, var(--warn) 45%, var(--line)); background: color-mix(in srgb, var(--warn) 9%, var(--surface)); border-radius: var(--radius); padding: 1rem 1.15rem; }
+  .notice svg { width: 1.25rem; height: 1.25rem; flex: none; color: var(--warn); margin-top: 0.15rem; }
+  .notice strong { display: block; font-family: var(--display); font-size: 1rem; margin-bottom: 0.2rem; }
+  .content .notice p { color: var(--ink); font-size: 0.93rem; line-height: 1.55; }
+  .notice b { font-weight: 600; }
+  .foot-note { flex-basis: 100%; font-size: 0.88rem; color: var(--muted); }
+  .foot-note strong { color: var(--ink); }
   @media (max-width: 820px) { section.block .wrap { grid-template-columns: 1fr; padding-block: 3.75rem; } }
 
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1.5rem; transition: border-color .2s, transform .2s, box-shadow .2s; min-width: 0; }
@@ -539,6 +545,7 @@
       <div class="sec-head"><span class="idx">02 / PROJECTS</span><h2>Projects</h2></div>
       <div class="content">
         <p class="quiet">Systems I have built, deployed or run, from production work to personal labs and research prototypes.</p>
+        <aside class="notice reveal" role="note" aria-label="Disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><div><strong>Personal website &middot; Disclaimer</strong><p>Not an official website of UUM or UUMIT. Work projects below are described in general terms only, exclude confidential information, and reflect my own views.</p></div></aside>
         <div class="p-tools" id="p-tools" role="group" aria-label="Filter projects"></div>
         <div class="projects" id="projects-list"></div>
       </div>
@@ -630,6 +637,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="idx">07 / WORK</span><h2>Work</h2></div>
       <div class="content">
+        <aside class="notice reveal" role="note" aria-label="Disclaimer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><div><strong>Personal website &middot; Disclaimer</strong><p>This is my own personal website. It is <b>not an official website</b> of Universiti Utara Malaysia (UUM) or UUMIT, and it does not speak for them. All views and content are my own. Work projects are described in general terms only and exclude any confidential or internal information.</p></div></aside>
         <div class="roles">
           <article class="role card reveal">
             <span class="org">UUMIT · Universiti Utara Malaysia</span>
@@ -650,7 +658,6 @@
             <p>Professional registration under the Technologists and Technicians Act 2015 (Act 768), in the field of information and computing technology.</p>
           </article>
         </div>
-        <p class="quiet disclaimer reveal">This is a personal website. The views and content here are my own and do not represent Universiti Utara Malaysia or UUMIT.</p>
         <div class="platforms reveal">
           <span class="label">Platforms and technologies I work with or have trained on</span>
           <ul class="chips">
@@ -771,7 +778,8 @@
 
 <footer>
   <div class="wrap">
-    <span class="label">© 2026 Syafiq Kassim, Gtech. · Personal site; views are my own</span>
+    <p class="foot-note"><strong>Personal website.</strong> Not an official website of Universiti Utara Malaysia (UUM) or UUMIT. Views and content are my own and do not represent the university.</p>
+    <span class="label">© 2026 Syafiq Kassim, Gtech.</span>
     <span class="label">Built by hand · no trackers · 6.47° N, 100.50° E</span>
   </div>
 </footer>
