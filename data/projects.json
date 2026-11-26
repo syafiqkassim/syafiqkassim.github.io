@@ -30,13 +30,14 @@
     ]
   },
   {
-    "title": "Web Application Firewall operations",
+    "title": "Web Application Firewall operations (FortiWeb)",
     "type": "Work",
     "period": "2026 – present",
     "role": "Backup administrator",
     "challenge": "The university's public web applications are protected by a Web Application Firewall (WAF), which needs trained cover whenever the primary administrator is unavailable.",
-    "actions": "Trained on the WAF and act as backup to the primary administrator, covering and monitoring the university's WAF.",
+    "actions": "Completed FortiWeb Administrator Training and act as backup to the primary administrator, covering and monitoring the university’s FortiWeb WAF.",
     "tools": [
+      "FortiWeb",
       "Web Application Firewall",
       "Web application security",
       "Security monitoring"
