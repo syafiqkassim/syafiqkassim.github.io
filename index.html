@@ -250,6 +250,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#training">Training</a></li>
+        <li><a href="#csr">CSR</a></li>
         <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -362,6 +363,16 @@
       <div class="content">
         <p class="quiet">Courses, workshops and seminars I have attended, newest first.</p>
         <div class="training" id="training-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="csr" hidden>
+    <div class="wrap">
+      <h2>CSR</h2>
+      <div class="content">
+        <p class="quiet">Community and environmental work I take part in beyond my day job.</p>
+        <div class="roles" id="csr-list"></div>
       </div>
     </div>
   </section>
@@ -666,6 +677,27 @@
   fetch('data/training.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
     .then(list => { if (Array.isArray(list)) renderTraining(list); })
+    .catch(() => {});
+
+  // CSR / community involvement lives in data/csr.json (also edited through the CMS).
+  function renderCsr(list) {
+    const str = v => (typeof v === 'string') ? v.trim() : '';
+    const items = list.map(c => ({ org: str(c && c.organisation), role: str(c && c.role), desc: str(c && c.description) }))
+      .filter(c => c.org || c.role);
+    const box = $('csr-list'); box.textContent = '';
+    items.forEach(c => {
+      const a = document.createElement('article'); a.className = 'role';
+      if (c.org) { const o = document.createElement('span'); o.className = 'org'; o.textContent = c.org; a.appendChild(o); }
+      if (c.role) { const h = document.createElement('h3'); h.textContent = c.role; a.appendChild(h); }
+      if (c.desc) { const d = document.createElement('p'); d.textContent = c.desc; a.appendChild(d); }
+      box.appendChild(a);
+    });
+    $('csr').hidden = items.length === 0;
+    if (items.length && location.hash === '#csr' && !$('top').hidden) $('csr').scrollIntoView();
+  }
+  fetch('data/csr.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(list => { if (Array.isArray(list)) renderCsr(list); })
     .catch(() => {});
 
   // Articles live in data/articles.json (edited through the CMS at /admin). Fall back to the inline copy if it can't load.

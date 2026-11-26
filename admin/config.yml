@@ -120,3 +120,25 @@ collections:
         type: date
         required: false
         hint: Leave empty for a one-day programme.
+
+  - name: csr
+    label: CSR
+    label_singular: CSR involvement
+    description: Community, volunteer and environmental involvement shown in the CSR section, in the order listed here.
+    file: data/csr.json
+    identifier_field: organisation
+    summary: "{{organisation}} · {{role}}"
+    fields:
+      - name: organisation
+        label: Organisation / programme
+        widget: string
+        hint: e.g. Rakan Alam Sekitar (RAS). Malay or English names are fine.
+      - name: role
+        label: Role
+        widget: string
+        hint: e.g. Life Member, Volunteer, Facilitator, Speaker.
+      - name: description
+        label: Short description
+        widget: text
+        required: false
+        hint: Optional. One sentence in English about the organisation or what you did.
