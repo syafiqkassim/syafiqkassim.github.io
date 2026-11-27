@@ -13,7 +13,7 @@
       "Server monitoring",
       "SLA reporting"
     ],
-    "period": "2023 – present"
+    "period": "2022 – present"
   },
   {
     "title": "Endpoint and network security monitoring",
@@ -46,10 +46,10 @@
   {
     "title": "Privileged Access Management proof of concept and load balancer installation",
     "type": "Work",
-    "period": "2026",
+    "period": "2025 – 2026",
     "role": "PoC participant and installation support",
     "challenge": "The IT department evaluated Privileged Access Management (PAM) to secure administrative access, and installed a load balancer to improve the availability of university systems.",
-    "actions": "Took part in the PAM proof of concept (PoC). Provided standby support during the vendor's installation of the load balancer.",
+    "actions": "Took part in the PAM proof of concept (PoC) in 2025. Provided standby support during the vendor's installation of the load balancer in 2026.",
     "tools": [
       "Privileged Access Management",
       "Proof of concept",
